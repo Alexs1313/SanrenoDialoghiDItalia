@@ -39,10 +39,10 @@ export const SanrenoStoreProvider = ({ children }) => {
 
   const saveSanrenoStory = async data => {
     try {
-      const storedFishinCrd = await AsyncStorage.getItem('sanrenostories');
-      let notes = storedFishinCrd !== null ? JSON.parse(storedFishinCrd) : [];
+      const strored = await AsyncStorage.getItem('sanrenostories');
+      let story = strored !== null ? JSON.parse(strored) : [];
 
-      const updatedSanrenoSt = [...notes, data];
+      const updatedSanrenoSt = [...story, data];
 
       await AsyncStorage.setItem(
         'sanrenostories',
@@ -68,11 +68,13 @@ export const SanrenoStoreProvider = ({ children }) => {
     }
   };
 
-  const deleteSanrenoStory = async selectedPlace => {
+  const deleteSanrenoStory = async selectedId => {
     const jsonValue = await AsyncStorage.getItem('sanrenostories');
     let data = jsonValue != null ? JSON.parse(jsonValue) : [];
 
-    const filtered = data.filter(item => item.id !== selectedPlace.id);
+    const filtered = data.filter(
+      item => item.sanrenoid !== selectedId.sanrenoid,
+    );
 
     setSavedSanrenoStr(filtered);
     await AsyncStorage.setItem('sanrenostories', JSON.stringify(filtered));

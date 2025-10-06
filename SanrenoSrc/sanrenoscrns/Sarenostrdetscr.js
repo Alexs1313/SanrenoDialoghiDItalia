@@ -20,28 +20,34 @@ const Sarenostrdetscr = ({ route }) => {
   const story = route.params;
   const nav = useNavigation();
   const [isSavedSanrenoStr, setIsSavedSanrenoStr] = useState(false);
-  const { saveSanrenoStory, getSanrenoStory, deleteSanrenoStory } =
-    useSanrenoStore();
+  const {
+    saveSanrenoStory,
+    getSanrenoStory,
+    deleteSanrenoStory,
+    savedSanrenoStr,
+  } = useSanrenoStore();
 
   useFocusEffect(
     useCallback(() => {
-      renderMerckurLocations(story);
+      renderSanrenoStory(story);
       getSanrenoStory();
     }, []),
   );
 
-  const toggleMerckurSaved = selectedPlace => {
+  console.log(savedSanrenoStr);
+
+  const toggleSanrenoSaved = () => {
     if (isSavedSanrenoStr)
-      deleteSanrenoStory(selectedPlace), setIsSavedSanrenoStr(false);
-    else saveSanrenoStory(selectedPlace), setIsSavedSanrenoStr(true);
+      deleteSanrenoStory(story), setIsSavedSanrenoStr(false);
+    else saveSanrenoStory(story), setIsSavedSanrenoStr(true);
   };
 
-  const renderMerckurLocations = async item => {
+  const renderSanrenoStory = async item => {
     const jsonValue = await AsyncStorage.getItem('sanrenostories');
     const favoritesList = JSON.parse(jsonValue);
 
     if (favoritesList != null) {
-      let data = favoritesList.find(fav => fav.merckurid === item.merckurid);
+      let data = favoritesList.find(fav => fav.sanrenoid === item.sanrenoid);
 
       return data == null
         ? setIsSavedSanrenoStr(false)
@@ -103,7 +109,7 @@ ${story.sanrenodesc}
             >
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => toggleMerckurSaved(story)}
+                onPress={() => toggleSanrenoSaved()}
               >
                 <ImageBackground
                   source={require('../../assets/images/sanremogrdbtn.png')}
