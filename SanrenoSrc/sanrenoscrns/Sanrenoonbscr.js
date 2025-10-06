@@ -45,15 +45,33 @@ const Sanrenoonbscr = () => {
               )}
             </>
           ) : currentSanremoSlide === 1 ? (
-            <Image
-              source={require('../../assets/images/sanrenoldr.png')}
-              style={styles.sanrenoimg}
-            />
+            <>
+              {Platform.OS === 'ios' ? (
+                <Image
+                  source={require('../../assets/images/sanrenoldr.png')}
+                  style={styles.sanrenoimg}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/images/sanremoandlogo.png')}
+                  style={{ width: 81, height: 121, alignSelf: 'center' }}
+                />
+              )}
+            </>
           ) : (
-            <Image
-              source={require('../../assets/images/sanrenoldr.png')}
-              style={styles.sanrenoimg}
-            />
+            <>
+              {Platform.OS === 'ios' ? (
+                <Image
+                  source={require('../../assets/images/sanrenoldr.png')}
+                  style={styles.sanrenoimg}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/images/sanremoandlogo.png')}
+                  style={{ width: 81, height: 121, alignSelf: 'center' }}
+                />
+              )}
+            </>
           )}
 
           <LinearGradient
