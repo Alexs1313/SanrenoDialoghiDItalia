@@ -443,6 +443,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 5,
     marginBottom: 50,
   },
