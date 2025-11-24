@@ -1,6 +1,6 @@
 workflows:
   ios-workflow:
-    name: Sanreno Dialoghi D'Italia
+    name: Sanreno Dialoghi DItalia
     max_build_duration: 120
     instance_type: mac_mini_m2
     integrations:
@@ -44,4 +44,4 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_app_store: true
-        copyright: Sanreno Dialoghi D'Italia 2025
+        copyright: Sanreno Dialoghi DItalia 2025
