@@ -11,8 +11,8 @@ workflows:
         bundle_identifier: com.SanrenoDialoghiDItalia
       vars:
         BUNDLE_ID: com.SanrenoDialoghiDItalia
-        XCODE_WORKSPACE: SanrenoDialoghiDItalia.xcworkspace
-        XCODE_SCHEME: SanrenoDialoghiDItalia
+        XCODE_WORKSPACE: SanrenoDialoghiDitalia.xcworkspace
+        XCODE_SCHEME: SanrenoDialoghiDitalia
         APP_STORE_APPLE_ID: 6755674367
     scripts:
       - name: Install npm dependencies
